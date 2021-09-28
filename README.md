@@ -142,7 +142,7 @@ pry(main)> hector = Person.new({name: 'Hector', interests: ['sewing', 'millinery
 pry(main)> toni = Person.new({name: 'Toni', interests: ['sewing', 'knitting']})
 #=> #<Person:0x00007fe44286a348...>
 
-pry(main)> tony = Person.new({name: 'Tony', interests: ['drawing', 'knitting']})
+pry(main)> zoey = Person.new({name: 'Zoey', interests: ['drawing', 'knitting']})
 #=> #<Person:0x00007fe442335788...>
 
 pry(main)> knitting = Craft.new('knitting', {yarn: 20, scissors: 1, knitting_needles: 2})
@@ -154,7 +154,7 @@ pry(main)> sewing = Craft.new('sewing', {fabric: 5, scissors: 1, thread: 1})
 pry(main)> painting = Craft.new('painting', {canvas: 1, paint_brush: 2, paints: 5})
 #=> #<Craft:0x00007fe4330159e0...>
 
-pry(main)> event = Event.new("Carla's Craft Connection", [knitting, painting, sewing], [hector, toni, tony])
+pry(main)> event = Event.new("Carla's Craft Connection", [knitting, painting, sewing], [hector, toni, zoey])
 #=> #<Event:0x00007fe442285ea0...>
 
 pry(main)> event.attendees_by_craft_interest
@@ -191,7 +191,7 @@ pry(main)> hector = Person.new({name: 'Hector', interests: ['sewing', 'millinery
 pry(main)> toni = Person.new({name: 'Toni', interests: ['sewing', 'knitting']})
 #=> #<Person:0x00007fae2f018490...>
 
-pry(main)> tony = Person.new({name: 'Tony', interests: ['drawing', 'knitting', 'painting']})
+pry(main)> zoey = Person.new({name: 'Zoey', interests: ['drawing', 'knitting', 'painting']})
 #=> #<Person:0x00007fae4d9526f0...>
 
 pry(main)> knitting = Craft.new('knitting', {yarn: 20, scissors: 1, knitting_needles: 2})
@@ -219,11 +219,11 @@ pry(main)> toni.add_supply('paint_brush', 10)
 
 pry(main)> toni.add_supply('paints', 20)
 
-pry(main)> tony.add_supply('yarn', 20)
+pry(main)> zoey.add_supply('yarn', 20)
 
-pry(main)> tony.add_supply('scissors', 2)
+pry(main)> zoey.add_supply('scissors', 2)
 
-pry(main)> tony.add_supply('knitting_needles', 2)
+pry(main)> zoey.add_supply('knitting_needles', 2)
 
 pry(main)> hector.add_supply('fabric', 5)
 
@@ -237,7 +237,7 @@ pry(main)> hector.add_supply('paint_brush', 10)
 
 pry(main)> hector.add_supply('paints', 20)
 
-pry(main)> event = Event.new("Carla's Craft Connection", [knitting, painting, sewing], [hector, toni, tony])
+pry(main)> event = Event.new("Carla's Craft Connection", [knitting, painting, sewing], [hector, toni, zoey])
 #=> #<Event:0x00007fae4d23d8b0...>
 
 pry(main)> event.assign_attendees_to_crafts
