@@ -26,4 +26,8 @@ describe Event do
 
     expect(results).to eq('sewing')
   end
+
+  it 'can return a list of supplies' do
+    expect(@event.supply_list).to eq(["fabric", "scissors", "thread", "sewing_needles", "yarn", "knitting_needles"])
+  end
 end

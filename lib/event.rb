@@ -13,4 +13,14 @@ class Event
       craft.supplies.keys.count
     end.name
   end
+
+  def supply_list
+    supplies = []
+    @crafts.each do |craft|
+      craft.supplies.keys.each do |supply|
+        supplies << supply.to_s
+      end
+    end
+    supplies.uniq!
+  end
 end
