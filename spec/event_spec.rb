@@ -76,5 +76,28 @@ describe Event do
       expected = ["fabric", "scissors", "thread", "sewing_needles", "yarn", "knitting_needles"]
       expect(@event.supply_list).to eq(expected)
     end
+  end
+
+  describe '#can_build?' do
+    it 'can tell if attendee has enough supplies required' do
+      @sewing = Craft.new('sewing', {fabric: 5, scissors: 1, thread: 1, sewing_needles: 1})
+      @hector = Person.new({
+        name: 'Hector',
+        interests: ['sewing', 'millinery', 'drawing']
+      })
+      @event = Event.new("Carla's Craft Connection", [@sewing], [@hector])
+
+      expect(@hector.can_build?(@sewing)).to be false
+
+      @hector.add_supply('fabric', 7)
+      @hector.add_supply('thread', 1)
+
+      expect(@hector.can_build?(@sewing)).to be false
+
+      @hector.add_supply('scissors', 1)
+      @hector.add_supply('sewing_needles', 1)
+
+      expect(@hector.can_build?(@sewing)).to be true
+    end
   end 
 end
