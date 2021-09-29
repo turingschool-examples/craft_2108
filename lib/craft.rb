@@ -6,4 +6,8 @@ class Craft
     @name = name
     @supplies_required = supplies_required
   end
+
+  def materials_required
+    supplies_required.keys
+  end
 end
