@@ -11,6 +11,7 @@ class Person
   def add_supply(supply, amount)
   #line 13 took me sooo long to work out >_<
     @supplies.store(supply, amount)
+  #I spent most of the time with this one
     supplies_added = {}
     require "pry"; binding.pry
       @supplies.each do |added|
