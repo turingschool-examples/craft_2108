@@ -39,4 +39,8 @@ RSpec.describe "Event" do
   it "can list the attendee names" do
     expect(@event.attendee_names).to eq(["Hector", "Toni"])
   end
+
+  it "can list all supplies" do
+    expect(@event.supply_list).to eq(["fabric", "scissors", "thread", "sewing_needles", "yarn", "knitting_needles"])
+  end
 end

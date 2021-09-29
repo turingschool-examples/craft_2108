@@ -14,4 +14,10 @@ class Event
       person.name
     end
   end
+
+  # def supply_list
+  #   @crafts.map do |craft|
+  #     craft.
+  # end
+
 end
