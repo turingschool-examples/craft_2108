@@ -11,5 +11,15 @@ class Person
 
   def add_supply(name, amount)
     @supplies[name] += amount
-  end 
+  end
+
+  def can_build?(craft)
+    if @supplies == {}
+      false
+    else
+      @supplies.each do |supply|
+        require "pry"; binding.pry
+      end
+    end
+  end
 end
