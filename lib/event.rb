@@ -10,7 +10,7 @@ class Event
   end
 
   def attendee_names
-    Person.each do |person|
+    @attendees.map do |person|
       person.name
     end
   end
