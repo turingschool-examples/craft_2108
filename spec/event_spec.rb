@@ -30,4 +30,10 @@ describe Event do
   it 'can return a list of supplies' do
     expect(@event.supply_list).to eq(["fabric", "scissors", "thread", "sewing_needles", "yarn", "knitting_needles"])
   end
+
+  it '#can_build?' do
+    results = @hector.can_build?(@sewing)
+
+    expect(results).to eq(false)
+  end
 end

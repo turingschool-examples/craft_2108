@@ -12,4 +12,9 @@ class Person
   def add_supply(item, quantity)
     @supplies[item] += quantity
   end
+
+  def can_build?(craft)
+    needed = craft.supplies.keys
+    @supplies.include?(needed)
+  end
 end
