@@ -20,8 +20,8 @@ RSpec.describe Craft do
   it 'can determine supply count' do
     expect(@craft.supply_count).to eq(3)
   end
-  
+
   it 'can return supply names' do
-    expect(@craft.supply_names).to eq(['yarn', 'scissors', 'knitting_needles'])
+    expect(@craft.supply_names).to eq(%w[yarn scissors knitting_needles])
   end
 end

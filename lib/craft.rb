@@ -13,7 +13,7 @@ class Craft
 
   def supply_names
     @supplies_required.map do |supply, _amount|
-      (supply.to_s)
+      supply.to_s
     end
   end
 end

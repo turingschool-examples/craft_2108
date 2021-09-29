@@ -9,9 +9,12 @@ RSpec.describe Event do
                           sewing_needles: 1 })
     @knitting = Craft.new('knitting',
                           { yarn: 20, scissors: 1, knitting_needles: 2 })
+    @painting = Craft.new('painting',
+                          { canvas: 1, paint_brush: 2, paints: 5 })
     @hector = Person.new({ name: 'Hector',
                            interests: %w[sewing millinery drawing] })
     @toni = Person.new({ name: 'Toni', interests: %w[sewing knitting] })
+    @zoey = Person.new({ name: 'Zoey', interests: %w[drawing knitting] })
   end
 
   it 'exists' do
@@ -45,5 +48,27 @@ RSpec.describe Event do
                                        sewing_needles yarn knitting_needles])
   end
 
-   
+  it 'can make a hash of crafts' do
+    event = Event.new("Carla's Craft Connection",
+                      [@knitting, @painting, @sewing], [@hector, @toni, @zoey])
+    expect(event.craft_hash).to eq({ 'knitting' => [], 'painting' => [],
+                                     'sewing' => [] })
+  end
+
+  it 'can return attendees by craft interest' do
+    event = Event.new("Carla's Craft Connection",
+                      [@knitting, @painting, @sewing], [@hector, @toni, @zoey])
+    expected = { 'knitting' => [@toni, @zoey], 'painting' => [],
+                 'sewing' => [@hector, @toni] }
+
+    expect(event.attendees_by_craft_interest).to eq(expected)
+  end
+
+  it 'can return crafts that use item' do
+    event = Event.new("Carla's Craft Connection",
+                      [@knitting, @painting, @sewing], [@hector, @toni, @zoey])
+    expect(event.crafts_that_use('scissors')).to eq([@knitting,
+                                                     @sewing])
+    expect(event.crafts_that_use('fire')).to eq([])
+  end
 end
