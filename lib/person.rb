@@ -1,4 +1,11 @@
 class Person
+  attr_reader :name,
+              :interests,
+              :supplies
+              
   def initialize(info)
-  end 
+    @name = info[:name]
+    @interests = info[:interests]
+    @supplies = Hash.new
+  end
 end
