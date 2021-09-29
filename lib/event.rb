@@ -43,4 +43,26 @@ class Event
       craft.supplies_required.include?(supply.to_sym)
     end
   end
+
+  def assign_attendees_to_crafts
+    selection_hash = {}
+    @crafts.each do |craft|
+      selection_hash[craft] = []
+      
+      @attendees.each do |attendee|
+        if attendees_by_craft_interest[craft.name].include?(attendee) && attendee.can_build?(craft)
+          selection_hash[craft] << attendee
+        end
+      end
+    end
+    
+    return_hash = {}
+    @crafts.each do |craft|
+      return_hash[craft] = []
+
+      return_hash[craft] << selection_hash[craft].sample(rand(3))
+    end
+    require"pry";binding.pry
+    return_hash
+  end
 end

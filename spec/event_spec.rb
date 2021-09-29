@@ -3,9 +3,9 @@ require './lib/event'
 
 describe Event do
   before :each do
-    @hector = Person.new({name: 'Hector', interests: ['sewing', 'millinery', 'drawing']})
+    @hector = Person.new({name: 'Hector', interests: ['sewing', 'millinery', 'drawing', 'painting']})
     @toni = Person.new({name: 'Toni', interests: ['sewing', 'knitting']})
-    @zoey = Person.new({name: 'Zoey', interests: ['drawing', 'knitting']})
+    @zoey = Person.new({name: 'Zoey', interests: ['drawing', 'knitting', 'painting']})
 
     @knitting = Craft.new('knitting', {yarn: 20, scissors: 1, knitting_needles: 2})
     @sewing = Craft.new('sewing', {fabric: 5, scissors: 1, thread: 1, sewing_needles: 1})
@@ -41,7 +41,7 @@ describe Event do
   it '#attendees_by_craft_interest' do
     expect(@event.attendees_by_craft_interest).to eq({
       "knitting"=>[@toni,@zoey],
-      "painting"=>[],
+      "painting"=>[@hector, @zoey],
       "sewing"=>[@hector,@toni]
     })
   end
@@ -49,6 +49,31 @@ describe Event do
   it '#crafts_that_use' do
     expect(@event.crafts_that_use('scissors')).to eq [@knitting, @sewing]
     expect(@event.crafts_that_use('fire')).to eq []
+  end
 
+  it '#assign_attendees_to_crafts' do
+    @toni.add_supply('yarn', 30)
+    @toni.add_supply('scissors', 2)
+    @toni.add_supply('knitting_needles', 5)
+    @toni.add_supply('fabric', 10)
+    @toni.add_supply('scissors', 1)
+    @toni.add_supply('thread', 2)
+    @toni.add_supply('paint_brush', 10)
+    @toni.add_supply('paints', 20)
+
+    @zoey.add_supply('yarn', 20)
+    @zoey.add_supply('scissors', 2)
+    @zoey.add_supply('knitting_needles', 2)
+
+    @hector.add_supply('fabric', 5)
+    @hector.add_supply('scissors', 1)
+    @hector.add_supply('thread', 1)
+    @hector.add_supply('canvas', 5)
+    @hector.add_supply('paint_brush', 10)
+    @hector.add_supply('paints', 20)
+
+    expect(@event.assign_attendees_to_crafts).to be_a Hash
+    expect(@event.assign_attendees_to_crafts.keys).to eq [@knitting, @painting, @sewing]
+    expect(@event.assign_attendees_to_crafts[@knitting]).to be_a Array
   end
 end
