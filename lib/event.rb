@@ -32,4 +32,8 @@ class Event
     end
     all
   end
+
+  def attendees_by_craft_interest
+
+  end 
 end

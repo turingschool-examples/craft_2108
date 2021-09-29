@@ -4,20 +4,25 @@ require './lib/person'
 require 'rspec'
 
 describe Event do
-  before :each do
+  it 'exists' do
     @craft = Craft.new('knitting', {yarn: 20, scissors: 1, knitting_needles: 2})
     @person = Person.new({
       name: 'Hector',
       interests: ['sewing', 'millinery', 'drawing']
     })
     @event = Event.new("Carla's Craft Connection", [@craft], [@person])
-  end
 
-  it 'exists' do
     expect(@event).to be_an Event
   end
 
   it 'has readable attributes' do
+    @craft = Craft.new('knitting', {yarn: 20, scissors: 1, knitting_needles: 2})
+    @person = Person.new({
+      name: 'Hector',
+      interests: ['sewing', 'millinery', 'drawing']
+    })
+    @event = Event.new("Carla's Craft Connection", [@craft], [@person])
+
     expect(@event.name).to eq("Carla's Craft Connection")
     expect(@event.crafts).to eq([@craft])
     expect(@event.attendees).to eq([@person])
@@ -78,26 +83,32 @@ describe Event do
     end
   end
 
-  describe '#can_build?' do
-    it 'can tell if attendee has enough supplies required' do
+  describe '#attendees_by_craft_interest' do
+    it 'can return all attendees by craft interest' do
+      @knitting = Craft.new('knitting', {yarn: 20, scissors: 1, knitting_needles: 2})
       @sewing = Craft.new('sewing', {fabric: 5, scissors: 1, thread: 1, sewing_needles: 1})
+      @painting = Craft.new('painting', {canvas: 1, paint_brush: 2, paints: 5})
+
       @hector = Person.new({
         name: 'Hector',
         interests: ['sewing', 'millinery', 'drawing']
       })
-      @event = Event.new("Carla's Craft Connection", [@sewing], [@hector])
+      @toni = Person.new({
+        name: 'Toni',
+        interests: ['sewing', 'knitting']
+      })
+      @zoey = Person.new({
+        name: 'Zoey',
+        interests: ['drawing', 'knitting']
+      })
+      @event = Event.new("Carla's Craft Connection", [@knitting, @painting, @sewing], [@hector, @toni, @zoey])
 
-      expect(@hector.can_build?(@sewing)).to be false
-
-      @hector.add_supply('fabric', 7)
-      @hector.add_supply('thread', 1)
-
-      expect(@hector.can_build?(@sewing)).to be false
-
-      @hector.add_supply('scissors', 1)
-      @hector.add_supply('sewing_needles', 1)
-
-      expect(@hector.can_build?(@sewing)).to be true
+      expected = {
+         "knitting"=>[@toni, @zoey],
+         "painting"=>[],
+         "sewing"=>[@hector, @toni]
+      }
+      expect(@event.attendees_by_craft_interest).to eq(expected)
     end
-  end 
+  end
 end
