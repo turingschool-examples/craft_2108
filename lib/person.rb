@@ -16,4 +16,10 @@ class Person
       @supplies[name] = amount
     end
   end
+
+  def can_build?(craft)
+    craft.supplies_required.keys.all? do |supply|
+      @supplies[supply.to_s]&. >= craft.supplies_required[supply]
+    end
+  end
 end
