@@ -62,7 +62,6 @@ class Event
 
       return_hash[craft] << selection_hash[craft].sample(rand(3))
     end
-    require"pry";binding.pry
     return_hash
   end
 end
