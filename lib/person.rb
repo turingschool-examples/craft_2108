@@ -18,7 +18,9 @@ class Person
     craft.supplies.keys.each do |supply|
       needed << supply.to_s
     end
-    @supplies.keys == needed
+    buildable = @supplies.keys & needed
+    buildable == needed
+    #if the supplies needed for the craft and the supplies person has on hand match, it's buildable. Did not account for amount with might have been better. But suppllies returns empty
     #supplies is returning empty, circle back to figure out why.
   end
 end

@@ -33,7 +33,7 @@ describe Event do
     expect(@event.supply_list).to eq(["fabric", "scissors", "thread", "sewing_needles", "yarn", "knitting_needles", 'canvas', 'paint_brush', 'paints'])
   end
 
-  xit '#can_build?' do
+  it '#can_build?' do
     results = @hector.can_build?(@sewing)
 
     expect(results).to eq(false)
@@ -44,11 +44,13 @@ describe Event do
 
     expect(results).to eq(false)
 
+    @hector.add_supply('fabric', 7)
+    @hector.add_supply('thread', 1)
     @hector.add_supply('scissors', 1)
     @hector.add_supply('sewing_needles', 1)
 
     results = @hector.can_build?(@sewing)
-    #hector is not retaining supplies, despite testing the add_supply method. Probably calling the wrong thing. craft supplies are symbols, you've accounted for that. add_supply might be the issue
+    #hector is not retaining supplies, despite testing the add_supply method. Probably calling the wrong thing. craft supplies are symbols, you've accounted for that. add_supply might be the issue. adds supplies find
     expect(results).to eq(true)
   end
 
