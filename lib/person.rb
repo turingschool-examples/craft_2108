@@ -14,9 +14,7 @@ class Person
   end
 
   def can_build?(craft)
-    if @supplies == {}
-      False
-    else
+    if @supplies != {}
       True
     end
   end
