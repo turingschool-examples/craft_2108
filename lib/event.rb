@@ -3,13 +3,15 @@ class Event
               :crafts,
               :attendees
 
-  def initialize(name, craft, person)
+  def initialize(name, crafts, attendees)
     @name   = name
-    @crafts  = craft
-    @attendees = person
+    @crafts  = crafts
+    @attendees = attendees
   end
 
   def attendee_names
-    
+    attendees.map do |attendee|
+      attendee.name
+    end 
   end
 end
