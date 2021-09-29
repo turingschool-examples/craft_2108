@@ -15,10 +15,10 @@ class Event
   end
 
   def craft_with_most_supples
-    supplies = @crafts.map do |craft|
-      craft.supplies_required.size
+    supplies = @crafts.max_by do |craft|
+      craft.name
     end
-    supplies
+    supplies.name
   end
 
   def supply_list
@@ -28,6 +28,5 @@ class Event
     supplies.map do |supply|
       supply.keys.join(" ").to_s
     end
-
   end
 end
