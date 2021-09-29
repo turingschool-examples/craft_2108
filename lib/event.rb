@@ -1,4 +1,5 @@
 require './lib/person'
+require './lib/craft'
 
 class Event
 
@@ -24,4 +25,13 @@ class Event
     end.name
   end
 
+  def supply_list
+    all_supplies = []
+    @crafts.each do |craft|
+      craft.supplies_required.keys.each do |key|
+        all_supplies << key.to_s
+      end
+    end
+    all_supplies.uniq
+  end
 end

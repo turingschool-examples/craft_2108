@@ -1,3 +1,6 @@
+require './lib/person'
+require './lib/event'
+
 class Craft
 
   attr_reader :name, :supplies_required
