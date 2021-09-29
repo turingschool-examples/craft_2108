@@ -41,4 +41,27 @@ RSpec.describe Event do
       expect(@event.supply_list).to eq ["fabric", "scissors", "thread", "sewing_needles", "yarn", "knitting_needles"]
     end
   end
+
+  context 'Iteration 3' do
+    before :each do
+      @toni = Person.new({name: 'Toni', interests: ['sewing', 'knitting']})
+      @zoey = Person.new({name: 'Zoey', interests: ['drawing', 'knitting']})
+      @sewing = Craft.new('sewing', {fabric: 5, scissors: 1, thread: 1, sewing_needles: 1})
+      @painting = Craft.new('painting', {canvas: 1, paint_brush: 2, paints: 5})
+      @event = Event.new("Carla's Craft Connection", [@knitting, @sewing, @painting], [@hector, @toni, @zoey])
+    end
+
+    it '#attendees_by_craft_interest' do
+      expect(@event.attendees_by_craft_interest).to eq({
+        'knitting' => [@toni, @zoey],
+        'painting' => [],
+        'sewing' => [@hector, @toni]
+      })
+    end
+
+    it '#crafts_that_use' do
+      expect(@event.crafts_that_use('scissors')).to eq [@knitting, @sewing]
+      expect(@event.crafts_that_use('fire')).to eq []
+    end
+  end
 end
