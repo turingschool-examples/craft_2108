@@ -17,7 +17,6 @@ class Person
     needed = []
     craft.supplies.keys.each do |supply|
       needed << supply.to_s
-      require "pry"; binding.pry
     end
     @supplies.keys == needed
     #supplies is returning empty, circle back to figure out why.
