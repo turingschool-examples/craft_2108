@@ -71,4 +71,28 @@ RSpec.describe Event do
                                                      @sewing])
     expect(event.crafts_that_use('fire')).to eq([])
   end
+
+  xit 'can assign attendees to crafts' do
+    @toni.add_supply('yarn', 30)
+    @toni.add_supply('scissors', 2)
+    @toni.add_supply('knitting_needles', 5)
+    @toni.add_supply('fabric', 10)
+    @toni.add_supply('scissors', 1)
+    @toni.add_supply('thread', 2)
+    @toni.add_supply('paint_brush', 10)
+    @toni.add_supply('paints', 20)
+    @zoey.add_supply('yarn', 20)
+    @zoey.add_supply('scissors', 2)
+    @zoey.add_supply('knitting_needles', 2)
+    @hector.add_supply('fabric', 5)
+    @hector.add_supply('scissors', 1)
+    @hector.add_supply('thread', 1)
+    @hector.add_supply('canvas', 5)
+    @hector.add_supply('paint_brush', 10)
+    @hector.add_supply('paints', 20)
+    event = Event.new("Carla's Craft Connection", [@knitting, @painting, @sewing], [@hector, @toni, @zoey])
+
+    expect(event.assign_attendees_to_crafts).to eq({ 'knitting' => [], 'painting' => [],
+                                     'sewing' => [] })
+  end
 end
