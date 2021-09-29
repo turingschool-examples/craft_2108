@@ -14,7 +14,12 @@ class Person
   end
 
   def can_build?(craft)
-    needed = craft.supplies.keys
-    @supplies.include?(needed)
+    needed = []
+    craft.supplies.keys.each do |supply|
+      needed << supply.to_s
+      require "pry"; binding.pry
+    end
+    @supplies.keys == needed
+    #supplies is returning empty, circle back to figure out why.
   end
 end
