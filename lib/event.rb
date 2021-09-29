@@ -48,12 +48,12 @@ class Event
       craft.supplies_required[material.to_sym]
     end
   end
-
-  def assign_attendees_to_crafts
-    assigned_craft = {}
-    assigned_craft = crafts.to_h
-    attendees_by_craft_interest.each_key do |attendee|
-      assigned_craft[] = attendees_by_craft_interest[attendee].shuffle.pop
-    end
-  end
+  #
+  # def assign_attendees_to_crafts
+  #   assigned_craft = {}
+  #   assigned_craft = crafts.to_h
+  #   attendees_by_craft_interest.each_key do |attendee|
+  #     assigned_craft[] = attendees_by_craft_interest[attendee].shuffle.pop
+  #   end
+  # end
 end
