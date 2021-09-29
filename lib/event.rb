@@ -21,4 +21,26 @@ class Event
       end
     end.flatten.uniq
   end
+
+
+  def attendees_by_craft_interest
+    return_hash = Hash.new([])
+
+    @crafts.each do |craft|
+      return_hash[craft.name] = []
+      
+      @attendees.each do |person|
+        if person.interests.include?(craft.name)
+          return_hash[craft.name] << person
+        end
+      end
+    end
+    return_hash
+  end
+
+  def crafts_that_use(supply)
+    @crafts.select do |craft|
+      craft.supplies_required.include?(supply.to_sym)
+    end
+  end
 end
