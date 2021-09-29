@@ -8,4 +8,8 @@ class Person
     @interests = attributes[:interests]
     @supplies  = Hash.new(0)
   end
+
+  def add_supply(item, quantity)
+    @supplies[item] = quantity
+  end
 end
