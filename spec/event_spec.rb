@@ -62,5 +62,8 @@ describe Event do
     results = @event.crafts_that_use('scissors')
 
     expect(results).to eq([@sewing, @knitting])
+
+    results = @event.crafts_that_use('fire')
+    expect(results).to eq([])
   end
 end
