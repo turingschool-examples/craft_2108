@@ -4,7 +4,7 @@ class Event
               :attendees
   def initialize(name, crafts, attendees)
     @name = name
-    @crafts = []
-    @attendees = []
+    @crafts = crafts
+    @attendees = attendees
   end
 end
