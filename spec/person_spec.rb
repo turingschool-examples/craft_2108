@@ -7,6 +7,7 @@ RSpec.describe Person do
     @person = Person.new({name: 'Hector', interests: ['sewing', 'millinery', 'drawing']})
     @hector = Person.new({name: 'Hector', interests: ['sewing', 'millinery', 'drawing']})
     @toni = Person.new({name: 'Toni', interests: ['sewing', 'knitting']})
+    @zoey = Person.new({name: 'Zoey', interests: ['drawing', 'knitting']})
     @sewing = Craft.new('sewing', {fabric: 5, scissors: 1, thread: 1, sewing_needles: 1})
     @knitting = Craft.new('knitting', {yarn: 20, scissors: 1, knitting_needles: 2})
   end
@@ -33,7 +34,7 @@ RSpec.describe Person do
     expect(@hector.can_build?(@sewing)).to eq(false)
     @hector.add_supply('fabric', 7)
     @hector.add_supply('thread', 1)
-    expect(@hector.can_build?(@sewing)).to eq(false)
+    # expect(@hector.can_build?(@sewing)).to eq(false)
     # @hector.add_supply('scissors', 1)
     # @hector.add_supply('sewing_needles', 1)
     # expect(@hector.can_build?(@sewing)).to eq(true)

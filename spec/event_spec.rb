@@ -7,8 +7,10 @@ RSpec.describe Event do
     @event = Event.new("Carla's Craft Connection", [@craft], [@person])
     @hector = Person.new({name: 'Hector', interests: ['sewing', 'millinery', 'drawing']})
     @toni = Person.new({name: 'Toni', interests: ['sewing', 'knitting']})
+    @zoey = Person.new({name: 'Zoey', interests: ['drawing', 'knitting']})
     @sewing = Craft.new('sewing', {fabric: 5, scissors: 1, thread: 1, sewing_needles: 1})
     @knitting = Craft.new('knitting', {yarn: 20, scissors: 1, knitting_needles: 2})
+    @painting = Craft.new('painting', {canvas: 1, paint_brush: 2, paints: 5})
   end
 
   it 'exists' do
@@ -34,5 +36,16 @@ RSpec.describe Event do
   it 'can return a supply list' do
     @event = Event.new("Carla's Craft Connection", [@sewing, @knitting], [@hector, @toni])
     expect(@event.supply_list).to eq(["fabric", "scissors", "thread", "sewing_needles", "yarn", "knitting_needles"])
-  end 
+  end
+
+  xit 'can find attendees by interest' do
+    @event = Event.new("Carla's Craft Connection", [@knitting, @painting, @sewing], [@hector, @toni, @zoey])
+    expect(@event.attendees_by_craft_interest).to eq({'knitting'=>[@toni, @zoey], 'painting'=>[], 'sewing'=>[@hector, @tony]})
+  end
+
+  it 'can find crafts that use specific supplies' do
+    @event = Event.new("Carla's Craft Connection", [@knitting, @painting, @sewing], [@hector, @toni, @zoey])
+    expect(@event.crafts_that_use('scissors')).to eq([@knitting, @sewing])
+    expect(@event.crafts_that_use('fire')).to eq([])
+  end
 end

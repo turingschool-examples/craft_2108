@@ -7,6 +7,7 @@ RSpec.describe Craft do
     @craft = Craft.new('knitting', {yarn: 20, scissors: 1, knitting_needles: 2})
     @sewing = Craft.new('sewing', {fabric: 5, scissors: 1, thread: 1, sewing_needles: 1})
     @knitting = Craft.new('knitting', {yarn: 20, scissors: 1, knitting_needles: 2})
+    @painting = Craft.new('painting', {canvas: 1, paint_brush: 2, paints: 5})
   end
 
   it 'exists' do

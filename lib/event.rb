@@ -39,4 +39,32 @@ class Event
     end
     results
   end
+
+  #this returns very closely to what we want but has duplicates and doesn't return painting=>[]
+  #can't figure out where to put .uniq to remove duplicates
+  def attendees_by_craft_interest
+    a1 = []
+    results = Hash.new(a1)
+    @attendees.each do |attendee|
+      attendee.interests.each do |interest|
+        if results[interest] == []
+          results[interest] = attendee.name
+        else
+          results[interest] = a1 << attendee.name
+        end
+      end
+    end
+    # require "pry"; binding.pry
+    results
+  end
+
+  def crafts_that_use(supply)
+    results = []
+    @crafts.each do |craft|
+      if craft.supplies_required.keys.include?(supply.to_sym)
+        results << craft
+      end
+    end
+    results
+  end
 end
