@@ -74,11 +74,16 @@ RSpec.describe Event do
     painting = Craft.new('painting', {canvas: 1, paint_brush: 2, paints: 5})
     event = Event.new("Carla's Craft Connection", [knitting, painting, sewing], [hector, toni, zoey])
 
-    expect(event.supply_list).to eq(["fabric", "scissors", "thread", "sewing_needles", "yarn", "knitting_needles"])
+    results = {
+              "knitting" => [toni, zoey],
+              "painting" => [],
+              "sewing" => [hector, toni]
+              }
+    expect(event.attendees_by_craft_interest).to eq(results)
   end
 end
 
-event.attendees_by_craft_interest
+# event.attendees_by_craft_interest
 #=> {
 #    "knitting"=>[#<Person:0x00007fe44286a348...>,#<Person:0x00007fe442335788...>],
 #    "painting"=>[],

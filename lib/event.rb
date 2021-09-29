@@ -44,4 +44,8 @@ class Event
     end
   final_array.uniq
   end
+
+  def attendees_by_craft_interest
+    
+  end
 end
