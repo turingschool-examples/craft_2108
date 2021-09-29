@@ -21,4 +21,15 @@ class Event
     end
     most.name
   end
+
+  def supply_list
+    all = []
+    item_sym = crafts.flat_map do |craft|
+      craft.supplies_required.keys
+    end.uniq
+    item_sym.each do |item|
+      all << item.to_s
+    end
+    all
+  end
 end
