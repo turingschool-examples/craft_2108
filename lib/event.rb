@@ -8,4 +8,8 @@ class Event
     @crafts  = craft
     @attendees = person
   end
+
+  def attendee_names
+    
+  end
 end
