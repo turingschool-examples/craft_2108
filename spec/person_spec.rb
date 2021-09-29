@@ -1,3 +1,4 @@
+require './lib/craft'
 require './lib/person'
 require 'rspec'
 
@@ -15,6 +16,7 @@ describe Person do
 
   it 'has readable attributes' do
     expect(@person.name).to eq('Hector')
-    expect(@person.interests).to eq(['sewing', 'millenery', 'drawing'])
-  end 
+    expect(@person.interests).to eq(['sewing', 'millinery', 'drawing'])
+    expect(@person.supplies). to eq({})
+  end
 end
