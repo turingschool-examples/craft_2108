@@ -12,4 +12,15 @@ class Person
   def add_supply(supply, quantity)
     @supplies[supply] += quantity
   end
+
+  def can_build?(craft)
+    flag = true
+
+    craft.supplies_required.each do | supply, quantity |
+      if @supplies[supply.to_s] < quantity
+        flag = false
+      end
+    end
+    flag
+  end
 end
