@@ -20,4 +20,6 @@ RSpec.describe Event do
     expect(event.crafts).to eq([craft])
     expect(event.attendees).to eq([person])
   end
+
+
 end
