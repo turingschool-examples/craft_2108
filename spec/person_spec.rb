@@ -25,4 +25,15 @@ RSpec.describe "Person" do
   it "may have supplies" do
     expect(@person.supplies).to eq({})
   end
+
+  it "can add supplies" do
+    @person.add_supply('fabric', 4)
+    @person.add_supply('scissors', 1)
+
+    expect(@person.supplies).to eq({"fabric"=>4, "scissors"=>1})
+
+    @person.add_supply('fabric', 3)
+
+    expect(@person.supplies).to eq({"fabric"=>7, "scissors"=>1})
+  end
 end
