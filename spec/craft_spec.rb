@@ -24,4 +24,9 @@ RSpec.describe Craft do
   it 'can return supply names' do
     expect(@craft.supply_names).to eq(%w[yarn scissors knitting_needles])
   end
+
+  it 'can know if craft includes supply' do
+    expect(@craft.craft_include?('scissors')).to eq(true)
+    expect(@craft.craft_include?('fire')).to eq(false)
+  end
 end

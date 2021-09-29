@@ -49,7 +49,7 @@ class Event
 
   def crafts_that_use(supply)
     @crafts.filter_map do |craft|
-      craft if craft.supplies_required.keys.join.include?(supply)
+      craft if craft.craft_include?(supply)
     end
   end
 end

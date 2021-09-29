@@ -16,4 +16,8 @@ class Craft
       supply.to_s
     end
   end
+
+  def craft_include?(supply)
+    supplies_required.keys.join.include?(supply)
+  end
 end
