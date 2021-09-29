@@ -13,6 +13,11 @@ class Person
     @supplies[item] += quantity
   end
 
+  def can_build?(craft)
 
+    craft.supplies_required.map do |supply, quantity|
+      if supply[ahhh]
+    end
+  end
 
 end
