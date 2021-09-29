@@ -6,7 +6,7 @@ require 'rspec'
 describe Event do
   before :each do
     @craft = Craft.new('knitting', {yarn: 20, scissors: 1, knitting_needles: 2})
-    @person = Person.new({
+    @hector = Person.new({
       name: 'Hector',
       interests: ['sewing', 'millinery', 'drawing']
     })
