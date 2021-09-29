@@ -46,6 +46,9 @@ class Event
   end
 
   def attendees_by_craft_interest
-    
+    @crafts.each do |craft|
+      require "pry"; binding.pry
+      craft.name
+    end
   end
 end
