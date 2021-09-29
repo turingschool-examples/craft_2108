@@ -1,3 +1,5 @@
+require './lib/craft'
+
 class Person
   attr_reader :name,
               :interests,
@@ -11,5 +13,11 @@ class Person
 
   def add_supply(supply, amount)
     supplies[supply] += amount
+  end
+
+  def can_build?(craft)
+    craft.supplies_required.all? do |supply, amount|
+      @supplies[supply.to_s] >= amount
+    end
   end
 end
