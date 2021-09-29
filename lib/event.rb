@@ -13,4 +13,21 @@ class Event
       attendee.name
     end
   end
+
+  def craft_with_most_supples
+    supplies = @crafts.map do |craft|
+      craft.supplies_required.size
+    end
+    supplies
+  end
+
+  def supply_list
+    supplies = @crafts.map do |craft|
+      craft.supplies_required
+    end
+    supplies.map do |supply|
+      supply.keys.join(" ").to_s
+    end
+
+  end
 end
