@@ -33,4 +33,19 @@ class Event
     end
     interest_hash
   end
+
+  def crafts_that_use(item)
+    used_by = []
+    symbol_to_string = []
+    @crafts.each do |craft|
+      craft.supplies.keys.each do |supply|
+        symbol_to_string << supply.to_s
+      end
+      if symbol_to_string.include?(item)
+        used_by << craft
+      end
+      symbol_to_string.clear
+    end
+    used_by
+  end
 end

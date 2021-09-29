@@ -57,4 +57,10 @@ describe Event do
 
     expect(results).to eq({"knitting"=>[@toni, @zoey], 'painting' => [], 'sewing'=> [@hector, @toni]})
   end
+
+  it 'can return a list of crafts that use a particular supply' do
+    results = @event.crafts_that_use('scissors')
+
+    expect(results).to eq([@sewing, @knitting])
+  end
 end
