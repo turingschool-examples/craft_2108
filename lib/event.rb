@@ -59,7 +59,7 @@ class Event
   def assign_attendees_to_crafts
     interested_and_can_build = Hash.new
     @crafts.each do |craft|
-      hash[craft] = []
+      interested_and_can_build[craft] = []
     end
 
     @crafts.each do |craft|
