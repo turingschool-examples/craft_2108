@@ -22,10 +22,10 @@ class Event
 
   def craft_with_most_supplies
 
-    @crafts.max_by do |craft|
+    craft = @crafts.max_by do |craft|
        craft.supplies_required.keys.count
-       craft.name
     end
+    craft.name
   end
 
   def supply_list

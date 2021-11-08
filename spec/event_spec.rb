@@ -30,7 +30,7 @@ RSpec.describe Event do
   end
 
   it '#craft_with_most_supplies' do
-    expect(@event.craft_with_most_supplies).to eq(@sewing)
+    expect(@event.craft_with_most_supplies).to eq('sewing')
   end
 
   it '#supply_list' do

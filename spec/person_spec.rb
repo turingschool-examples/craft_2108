@@ -39,13 +39,12 @@ RSpec.describe Person do
   it '#can_build?' do
     expect(@hector.can_build?(@sewing)).to eq(false)
 
-    hector.add_supply('fabric', 7)
-    hector.add_supply('thread', 1)
+    @hector.add_supply('fabric', 7)
+    @hector.add_supply('thread', 1)
     expect(@hector.can_build?(@sewing)).to eq(false)
 
-    hector.add_supply('scissors', 1)
-    hector.add_supply('sewing_needles', 1)
+    @hector.add_supply('scissors', 1)
+    @hector.add_supply('sewing_needles', 1)
     expect(@hector.can_build?(@sewing)).to eq(true)
-
   end
 end
